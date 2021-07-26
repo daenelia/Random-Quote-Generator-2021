@@ -106,11 +106,22 @@ function randomColor() {
 //when user clicks anywhere on the button, the "randomColor" function is called and changes the background colour to a random colour
 document.getElementById('load-quote').addEventListener("click", randomColor, false);
 
-//Extra: timed interval: a random quote are changed after a set interval and called in the function autoShow.
+/***Extra: timed interval: a random quote are changed after a set interval and called in the function autoShow.
+ * Caution: setInterval is not 100% reliably synchronise when called by two different functions. I believe that clicking the button also somehow 
+ * upsets the interval time. It does run fine when no button-clicking has talen place. However, I think the solution I may have is probably
+ * out of scope in what we have covered so far.
+***/
+
 let autoQuote;
+let autoColor;
 
 function autoShow() {
-  autoQuote = setInterval(printQuote, 5000);
+    autoQuote = setInterval(printQuote, 5000);
  }
 
+function autoShowColor() {
+    autocolor = setInterval(randomColor, 5000);
+}
+
 autoShow();
+autoShowColor();
